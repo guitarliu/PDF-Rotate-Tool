@@ -1,6 +1,9 @@
 ﻿using Microsoft.Win32;
 using System;
+using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Documents;
 using System.Windows.Input;
 
 namespace PDF_Rotate_Tool
@@ -57,7 +60,6 @@ namespace PDF_Rotate_Tool
         private void PDFList_Drop(object sender, DragEventArgs e)
         {
             TbkAnnotion.Visibility = Visibility.Hidden;
-            FilePathCmbx.Visibility = Visibility.Hidden;
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
             {
                 string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
@@ -97,7 +99,19 @@ namespace PDF_Rotate_Tool
                         }
                     }
                 }
+            }
+        }
 
+        private void PDFList_GotFocus(object sender, RoutedEventArgs e) 
+        {
+            TbkAnnotion.Visibility= Visibility.Visible;
+        }
+
+        private void Delete_Click(object sender, RoutedEventArgs e) 
+        {
+            while (PDFslbx.SelectedIndex != -1)
+            {
+                PDFslbx.Items.Remove(PDFslbx.SelectedItem);
             }
         }
     }

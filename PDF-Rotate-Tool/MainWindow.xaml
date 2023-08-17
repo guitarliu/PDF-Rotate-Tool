@@ -55,9 +55,16 @@
             <GridSplitter Background="Transparent" BorderBrush="Gray" BorderThickness="0,0,0,0.5" IsEnabled="False" VerticalAlignment="Bottom" HorizontalAlignment="Stretch"/>
             <Grid Grid.Row="1">
                 <ListBox x:Name="PDFslbx" Background="Transparent" BorderThickness="0"
-                         Margin="15,5,15,15" SelectionMode="Extended" AllowDrop="True"
-                         ItemsSource="{Binding PdfFile}" Drop="PDFList_Drop"
-                         ItemContainerStyle="{StaticResource GreenRoundedListBoxItemStyle}" MouseDoubleClick="PDFList_Click"/>
+                         Margin="15,5,15,15" SelectionMode="Extended" 
+                         AllowDrop="True" Drop="PDFList_Drop"
+                         ItemContainerStyle="{StaticResource GreenRoundedListBoxItemStyle}"
+                         MouseDoubleClick="PDFList_Click">
+                    <ListBox.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="删除" Click="Delete_Click"/>
+                        </ContextMenu>
+                    </ListBox.ContextMenu>
+                </ListBox>
                 <TextBlock x:Name="TbkAnnotion" Text="拖拽PDF文件至此处" VerticalAlignment="Center" HorizontalAlignment="Center"
                            Margin="0,-50,0,0" FontStyle="Italic" FontSize="17" FontWeight="DemiBold"
                            Opacity="0.3"/>
