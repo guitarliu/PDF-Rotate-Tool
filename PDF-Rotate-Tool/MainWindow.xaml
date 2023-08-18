@@ -10,7 +10,7 @@
         Icon="/Icons/logo.ico"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
-        BorderThickness="1" AllowDrop="True" 
+        BorderThickness="0" AllowDrop="True" BorderBrush="Transparent"
         AllowsTransparency="True" Background="Transparent"
         MouseLeftButtonDown="DragWindow" ResizeMode="CanResizeWithGrip">
     <Window.Resources>
@@ -39,10 +39,13 @@
             </Setter>
         </Style>
     </Window.Resources>
-    <Border Background="WhiteSmoke" CornerRadius="15">
+    <Border Background="WhiteSmoke" CornerRadius="15"
+            BorderThickness="0.5"
+            BorderBrush="Gray">
         <Grid Background="Transparent">
             <Grid.RowDefinitions>
                 <RowDefinition Height="30"/>
+                <RowDefinition Height="25"/>
                 <RowDefinition />
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
@@ -54,6 +57,66 @@
             </Grid>
             <GridSplitter Background="Transparent" BorderBrush="Gray" BorderThickness="0,0,0,0.5" IsEnabled="False" VerticalAlignment="Bottom" HorizontalAlignment="Stretch"/>
             <Grid Grid.Row="1">
+                <Menu>
+                    <MenuItem Header="文件">
+                        <MenuItem.Icon>
+                            <Image/>
+                        </MenuItem.Icon>
+                        <MenuItem x:Name="OpenFile_Menu" Header="打开" ToolTip="打开PDF所在路径" Click="OpenFile_Menu_Click">
+                            <MenuItem.Icon>
+                                <Image/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem x:Name="Close_Menu" Header="关闭" ToolTip="关闭并最小化软件" Click="Close_Menu_Click">
+                            <MenuItem.Icon>
+                                <Image/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                    </MenuItem>
+                    <MenuItem Header="工具" ToolTip="软件主要功能">
+                        <MenuItem.Icon>
+                            <Image/>
+                        </MenuItem.Icon>
+                        <MenuItem Header="PDF统一方向旋转" ToolTip="将所有PDF向同一方向旋围">
+                            <MenuItem.Icon>
+                                <Image/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="PDF智能横向旋转" ToolTip="判断PDF是否为横向，将所有纵向PDF（页面）旋转为横向">
+                            <MenuItem.Icon>
+                                <Image/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="PDF智能纵向旋转" ToolTip="判断PDF是否为纵向，将所有横向PDF（页面）旋转为横向">
+                            <MenuItem.Icon>
+                                <Image/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                    </MenuItem>
+                    <MenuItem Header="关于">
+                        <MenuItem.Icon>
+                            <Image/>
+                        </MenuItem.Icon>
+                        <MenuItem Header="帮助">
+                            <MenuItem.Icon>
+                                <Image/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="注册">
+                            <MenuItem.Icon>
+                                <Image/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="关于作者">
+                            <MenuItem.Icon>
+                                <Image/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                    </MenuItem>
+                </Menu>
+                <GridSplitter Background="Transparent" BorderBrush="Gray" BorderThickness="0,0,0,0.5" IsEnabled="False" VerticalAlignment="Bottom" HorizontalAlignment="Stretch"/>
+            </Grid>
+            <Grid Grid.Row="2">
                 <ListBox x:Name="PDFslbx" Background="Transparent" BorderThickness="0"
                          Margin="15,5,15,15" SelectionMode="Extended" 
                          AllowDrop="True" Drop="PDFList_Drop"
@@ -68,8 +131,6 @@
                 <TextBlock x:Name="TbkAnnotion" Text="拖拽PDF文件至此处" VerticalAlignment="Center" HorizontalAlignment="Center"
                            Margin="0,-50,0,0" FontStyle="Italic" FontSize="17" FontWeight="DemiBold"
                            Opacity="0.3"/>
-                <ComboBox x:Name="FilePathCmbx" VerticalAlignment="Center" HorizontalAlignment="Center"
-                          Width="100" Height="20" Margin="0,0,0,0"/>
             </Grid>        
         </Grid>
     </Border>

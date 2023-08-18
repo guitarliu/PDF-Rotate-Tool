@@ -82,8 +82,9 @@ namespace PDF_Rotate_Tool
         {
             TbkAnnotion.Visibility = Visibility.Hidden;
             OpenFileDialog dialog = new OpenFileDialog();
+            dialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             dialog.Multiselect = true;
-            dialog.Filter = "PDF Files|*.pdf";
+            dialog.Filter = "PDF Files (*.pdf)|*.pdf";
             if (dialog.ShowDialog() == true)
             {
                 string[] files = dialog.FileNames;
@@ -113,6 +114,35 @@ namespace PDF_Rotate_Tool
             {
                 PDFslbx.Items.Remove(PDFslbx.SelectedItem);
             }
+        }
+
+        private void OpenFile_Menu_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            openFileDialog.Multiselect = true;
+            openFileDialog.Filter = "PDF files (*.pdf)|*.pdf";
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                string[] files = openFileDialog.FileNames;
+                // open folder etc.
+                foreach (string file in files)
+                {
+                    if (System.IO.Path.GetExtension(file).Equals(".pdf", StringComparison.OrdinalIgnoreCase))
+                    {
+                        if (!PDFslbx.Items.Contains(file))
+                        {
+                            // Add the PDF file path to ListBoxItem
+                            PDFslbx.Items.Add(file);
+                        }
+                    }
+                }
+            }
+        }
+        private void Close_Menu_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
         }
     }
 }
