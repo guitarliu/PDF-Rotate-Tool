@@ -5,7 +5,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PDF_Rotate_Tool"
         mc:Ignorable="d"
-        Title="PDF-Rotate-Tool"
         Height="450" Width="800" MinHeight="300" MinWidth="500"
         Icon="/Icons/logo.ico"
         WindowStartupLocation="CenterScreen"
@@ -60,22 +59,22 @@
                 <Menu>
                     <MenuItem Header="文件">
                         <MenuItem.Icon>
-                            <Image/>
+                            <Image Source="Icons/folders.ico" Height="30"/>
                         </MenuItem.Icon>
                         <MenuItem x:Name="OpenFile_Menu" Header="打开" ToolTip="打开PDF所在路径" Click="OpenFile_Menu_Click">
                             <MenuItem.Icon>
-                                <Image/>
+                                <Image Source="Icons/open.ico" Height="30"/>
                             </MenuItem.Icon>
                         </MenuItem>
                         <MenuItem x:Name="Close_Menu" Header="关闭" ToolTip="关闭并最小化软件" Click="Close_Menu_Click">
                             <MenuItem.Icon>
-                                <Image/>
+                                <Image Source="Icons/close.ico" Height="30"/>
                             </MenuItem.Icon>
                         </MenuItem>
                     </MenuItem>
                     <MenuItem Header="工具" ToolTip="软件主要功能">
                         <MenuItem.Icon>
-                            <Image/>
+                            <Image Source="Icons/tool.ico" Height="30"/>
                         </MenuItem.Icon>
                         <MenuItem Header="PDF统一方向旋转" ToolTip="将所有PDF向同一方向旋围">
                             <MenuItem.Icon>
@@ -95,9 +94,9 @@
                     </MenuItem>
                     <MenuItem Header="关于">
                         <MenuItem.Icon>
-                            <Image/>
+                            <Image Source="Icons/about.ico" Height="30"/>
                         </MenuItem.Icon>
-                        <MenuItem Header="帮助">
+                        <MenuItem x:Name="Help_Menu" Header="帮助" Click="Help_Click">
                             <MenuItem.Icon>
                                 <Image/>
                             </MenuItem.Icon>

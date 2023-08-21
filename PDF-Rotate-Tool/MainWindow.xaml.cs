@@ -144,5 +144,11 @@ namespace PDF_Rotate_Tool
         {
             this.WindowState = WindowState.Minimized;
         }
+
+        private void Help_Click(object sender, RoutedEventArgs e)
+        {
+            Window helpWindow = new HelpWindow();
+            helpWindow.Show();
+        }
     }
 }

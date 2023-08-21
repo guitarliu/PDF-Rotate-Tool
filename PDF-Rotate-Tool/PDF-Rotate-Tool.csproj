@@ -9,11 +9,31 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Icons\about.ico" />
+    <None Remove="Icons\close.ico" />
+    <None Remove="Icons\folders.ico" />
     <None Remove="Icons\logo.ico" />
+    <None Remove="Icons\open.ico" />
+    <None Remove="Icons\tool.ico" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Icons\about.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\close.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\folders.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Icons\logo.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\open.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\tool.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
