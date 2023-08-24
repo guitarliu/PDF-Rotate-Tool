@@ -1,9 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
-using System.Linq;
+using System.Diagnostics;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
 using System.Windows.Input;
 
 namespace PDF_Rotate_Tool
@@ -148,7 +146,12 @@ namespace PDF_Rotate_Tool
         private void Help_Click(object sender, RoutedEventArgs e)
         {
             Window helpWindow = new HelpWindow();
-            helpWindow.Show();
+            helpWindow.ShowDialog();
+        }
+
+        private void Author_Click(object sender, RoutedEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo("https://www.notion.so/55a9daf124ea47b18d0322aca011d4dd?pvs=4") { UseShellExecute = true });
         }
     }
 }

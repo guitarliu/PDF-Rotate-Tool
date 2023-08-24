@@ -98,7 +98,7 @@
                         </MenuItem.Icon>
                         <MenuItem x:Name="Help_Menu" Header="帮助" Click="Help_Click">
                             <MenuItem.Icon>
-                                <Image/>
+                                <Image Source="Icons/help.ico" Height="30"/>
                             </MenuItem.Icon>
                         </MenuItem>
                         <MenuItem Header="注册">
@@ -106,9 +106,9 @@
                                 <Image/>
                             </MenuItem.Icon>
                         </MenuItem>
-                        <MenuItem Header="关于作者">
+                        <MenuItem x:Name="Author_Menu" Header="关于作者" Click="Author_Click">
                             <MenuItem.Icon>
-                                <Image/>
+                                <Image Source="Icons/author.ico" Height="30"/>
                             </MenuItem.Icon>
                         </MenuItem>
                     </MenuItem>
