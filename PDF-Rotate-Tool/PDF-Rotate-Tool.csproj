@@ -16,6 +16,7 @@
     <None Remove="Icons\help.ico" />
     <None Remove="Icons\logo.ico" />
     <None Remove="Icons\open.ico" />
+    <None Remove="Icons\register.ico" />
     <None Remove="Icons\tool.ico" />
   </ItemGroup>
 
@@ -39,6 +40,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Icons\open.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\register.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Icons\tool.ico">

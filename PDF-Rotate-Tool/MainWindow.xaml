@@ -101,9 +101,9 @@
                                 <Image Source="Icons/help.ico" Height="30"/>
                             </MenuItem.Icon>
                         </MenuItem>
-                        <MenuItem Header="注册">
+                        <MenuItem x:Name="Register_Menu" Header="注册" Click="Register_Click">
                             <MenuItem.Icon>
-                                <Image/>
+                                <Image Source="Icons/register.ico" Height="30"/>
                             </MenuItem.Icon>
                         </MenuItem>
                         <MenuItem x:Name="Author_Menu" Header="关于作者" Click="Author_Click">
