@@ -76,19 +76,19 @@
                         <MenuItem.Icon>
                             <Image Source="Icons/tool.ico" Height="30"/>
                         </MenuItem.Icon>
-                        <MenuItem Header="PDF统一方向旋转" ToolTip="将所有PDF向同一方向旋围">
+                        <MenuItem x:Name="OneDirectRotate_Menu" Header="PDF统一方向旋转" ToolTip="将所有PDF向同一方向旋围">
                             <MenuItem.Icon>
-                                <Image/>
+                                <Image Source="Icons/onedirectrotate.ico" Height="30"/>
                             </MenuItem.Icon>
                         </MenuItem>
-                        <MenuItem Header="PDF智能横向旋转" ToolTip="判断PDF是否为横向，将所有纵向PDF（页面）旋转为横向">
+                        <MenuItem x:Name="AutoHorizonalRotate_Menu" Header="PDF智能横向旋转" ToolTip="判断PDF是否为横向，将所有纵向PDF（页面）旋转为横向">
                             <MenuItem.Icon>
-                                <Image/>
+                                <Image Source="Icons/autohorizonalrotate.ico" Height="30"/>
                             </MenuItem.Icon>
                         </MenuItem>
-                        <MenuItem Header="PDF智能纵向旋转" ToolTip="判断PDF是否为纵向，将所有横向PDF（页面）旋转为横向">
+                        <MenuItem x:Name="AutoVerticalRotate_Menu" Header="PDF智能纵向旋转" ToolTip="判断PDF是否为纵向，将所有横向PDF（页面）旋转为横向">
                             <MenuItem.Icon>
-                                <Image/>
+                                <Image Source="Icons/autoverticalrotate.ico" Height="30"/>
                             </MenuItem.Icon>
                         </MenuItem>
                     </MenuItem>
@@ -127,7 +127,7 @@
                         </ContextMenu>
                     </ListBox.ContextMenu>
                 </ListBox>
-                <TextBlock x:Name="TbkAnnotion" Text="拖拽PDF文件至此处" VerticalAlignment="Center" HorizontalAlignment="Center"
+                <TextBlock x:Name="TbkAnnotion" Text="拖拽或双击加载PDF文件" VerticalAlignment="Center" HorizontalAlignment="Center"
                            Margin="0,-50,0,0" FontStyle="Italic" FontSize="17" FontWeight="DemiBold"
                            Opacity="0.3"/>
             </Grid>        

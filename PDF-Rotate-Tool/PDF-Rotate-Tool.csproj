@@ -11,13 +11,22 @@
   <ItemGroup>
     <None Remove="Icons\about.ico" />
     <None Remove="Icons\author.ico" />
+    <None Remove="Icons\autohorizonalrotate.ico" />
+    <None Remove="Icons\autoverticalrotate.ico" />
     <None Remove="Icons\close.ico" />
     <None Remove="Icons\folders.ico" />
     <None Remove="Icons\help.ico" />
     <None Remove="Icons\logo.ico" />
+    <None Remove="Icons\onedirectrotate.ico" />
     <None Remove="Icons\open.ico" />
     <None Remove="Icons\register.ico" />
     <None Remove="Icons\tool.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Icons\autoverticalrotate.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>
@@ -25,6 +34,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Icons\author.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\autohorizonalrotate.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Icons\close.ico">
@@ -37,6 +49,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Icons\logo.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\onedirectrotate.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Icons\open.ico">
