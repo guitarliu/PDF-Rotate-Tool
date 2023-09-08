@@ -143,6 +143,7 @@ namespace PDF_Rotate_Tool
         /// For PDFSharp
         /// "A positive angle indicates clockwise rotation"
         /// "A negative angle indicates counter-clockwise rotation"
+        /// PDF's Rotate angle include 0,90,180,270
         /// Rotation Angles must be -90,0,90,180,270
         /// </summary>
         /// <param name="sender"></param>
@@ -218,12 +219,52 @@ namespace PDF_Rotate_Tool
 
         private void AutoHorizonalRotate_Click(Object sender, RoutedEventArgs e)
         {
-            
+            foreach (string item in PDFslbx.Items)
+            {
+                Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+                try
+                {
+                    PdfDocument document = PdfReader.Open(item, PdfDocumentOpenMode.Modify);
+                    foreach (PdfPage page in document.Pages)
+                    {
+                        if (page.Rotate != 90 || page.Rotate != 270)
+                        {
+                            page.Rotate = 180;
+                        }
+                    }
+                    SaveFileDialog saveFileDialog = new SaveFileDialog();
+                    document.Save(item);
+                }
+                catch
+                {
+                    MessageBox.Show("选择文件不存在或有误!");
+                }
+            }
         }
 
         private void AutoVerticalRotate_Click(object sender, RoutedEventArgs e) 
         {
-
+            foreach (string item in PDFslbx.Items)
+            {
+                Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+                try
+                {
+                    PdfDocument document = PdfReader.Open(item, PdfDocumentOpenMode.Modify);
+                    foreach (PdfPage page in document.Pages)
+                    {
+                        if (page.Rotate != 0 || page.Rotate != 270)
+                        {
+                            page.Rotate = 180;
+                        }
+                    }
+                    SaveFileDialog saveFileDialog = new SaveFileDialog();
+                    document.Save(item);
+                }
+                catch
+                {
+                    MessageBox.Show("选择文件不存在或有误!");
+                }
+            }
         }
 
         private void Help_Click(object sender, RoutedEventArgs e)
