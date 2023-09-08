@@ -44,3 +44,8 @@ C:\Users\whuli\Desktop\PDF-Rotate-Tool\PDF-Rotate-Tool\obj\Debug\net6.0-windows\
 C:\Users\whuli\Desktop\PDF-Rotate-Tool\PDF-Rotate-Tool\obj\Debug\net6.0-windows\HelpWindow.baml
 C:\Users\xwlva\Desktop\PDF-Rotate-Tool\PDF-Rotate-Tool\obj\Debug\net6.0-windows\HelpWindow.g.cs
 C:\Users\xwlva\Desktop\PDF-Rotate-Tool\PDF-Rotate-Tool\obj\Debug\net6.0-windows\HelpWindow.baml
+C:\Users\xwlva\Desktop\PDF-Rotate-Tool\PDF-Rotate-Tool\bin\Debug\net6.0-windows\PdfSharp.dll
+C:\Users\xwlva\Desktop\PDF-Rotate-Tool\PDF-Rotate-Tool\bin\Debug\net6.0-windows\PdfSharp.pdb
+C:\Users\xwlva\Desktop\PDF-Rotate-Tool\PDF-Rotate-Tool\bin\Debug\net6.0-windows\PdfSharp.xml
+C:\Users\xwlva\Desktop\PDF-Rotate-Tool\PDF-Rotate-Tool\bin\Debug\net6.0-windows\de\PdfSharp.resources.dll
+C:\Users\xwlva\Desktop\PDF-Rotate-Tool\PDF-Rotate-Tool\obj\Debug\net6.0-windows\PDF-Rotate-Tool.csproj.CopyComplete

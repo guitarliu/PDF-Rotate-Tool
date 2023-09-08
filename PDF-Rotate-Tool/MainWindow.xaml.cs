@@ -1,6 +1,9 @@
 ﻿using Microsoft.Win32;
+using PdfSharp.Pdf.IO;
+using PdfSharp.Pdf;
 using System;
 using System.Diagnostics;
+using System.Text;
 using System.Windows;
 using System.Windows.Input;
 
@@ -136,11 +139,37 @@ namespace PDF_Rotate_Tool
             this.WindowState = WindowState.Minimized;
         }
 
+        /// <summary>
+        /// For PDFSharp
+        /// "A positive angle indicates clockwise rotation"
+        /// "A negative angle indicates counter-clockwise rotation"
+        /// Rotation Angles must be -90,0,90,180,270
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OneDirectRotate_Click(object sender, RoutedEventArgs e) 
         {
             foreach (string item in PDFslbx.Items)
             {
-                MessageBox.Show(item);
+                Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+                try 
+                {
+                    PdfDocument document = PdfReader.Open(item, PdfDocumentOpenMode.Modify);
+                    foreach (PdfPage page in document.Pages)
+                    {
+                        MessageBox.Show($"{page.Width}|{page.Height}|{page.Rotate}");
+                        //page.Rotate = -90;
+
+                    }
+                    SaveFileDialog saveFileDialog = new SaveFileDialog();
+                    document.Save(item);
+                }
+                catch 
+                {
+                    MessageBox.Show("选择文件不存在或有误!");
+                }
+
+
             }
         }
 
