@@ -59,16 +59,16 @@
                 <Menu>
                     <MenuItem Header="文件">
                         <MenuItem.Icon>
-                            <Image Source="Icons/folders.ico" Height="30"/>
+                            <Image Source="Icons/folders.ico" Height="30" RenderOptions.BitmapScalingMode="HighQuality"/>
                         </MenuItem.Icon>
                         <MenuItem x:Name="OpenFile_Menu" Header="打开" ToolTip="打开PDF所在路径" Click="OpenFile_Menu_Click">
                             <MenuItem.Icon>
-                                <Image Source="Icons/open.ico" Height="30"/>
+                                <Image Source="Icons/open.ico" Height="30" RenderOptions.BitmapScalingMode="HighQuality"/>
                             </MenuItem.Icon>
                         </MenuItem>
                         <MenuItem x:Name="Close_Menu" Header="关闭" ToolTip="关闭并最小化软件" Click="Close_Menu_Click">
                             <MenuItem.Icon>
-                                <Image Source="Icons/close.ico" Height="30"/>
+                                <Image Source="Icons/close.ico" Height="30" RenderOptions.BitmapScalingMode="HighQuality"/>
                             </MenuItem.Icon>
                         </MenuItem>
                     </MenuItem>
@@ -78,47 +78,47 @@
                         </MenuItem.Icon>
                         <MenuItem x:Name="ClockWise90Rotate_Menu" Header="顺时针旋转90°" ToolTip="将所有PDF沿顺时针旋转90°" Click="ClockWise90Rotate_Click">
                             <MenuItem.Icon>
-                                <Image Source="Icons/closewise90rotate.ico" Height="30"/>
+                                <Image Source="Icons/closewise90rotate.ico" Height="30" RenderOptions.BitmapScalingMode="HighQuality"/>
                             </MenuItem.Icon>
                         </MenuItem>
                         <MenuItem x:Name="CounterClockWise90Rotate_Menu" Header="逆时针旋转90°" ToolTip="将所有PDF沿逆时针旋转90°" Click="CounterClockWise90Rotate_Click">
                             <MenuItem.Icon>
-                                <Image Source="Icons/counterclockwise90rotate.ico" Height="30"/>
+                                <Image Source="Icons/counterclockwise90rotate.ico" Height="30" RenderOptions.BitmapScalingMode="HighQuality"/>
                             </MenuItem.Icon>
                         </MenuItem>
                         <MenuItem x:Name="Rotate180_Menu" Header="旋转180°" ToolTip="将所有PDF旋转180°" Click="Rotate180_Click">
                             <MenuItem.Icon>
-                                <Image Source="Icons/rotate180.ico" Height="30"/>
+                                <Image Source="Icons/rotate180.ico" Height="30" RenderOptions.BitmapScalingMode="HighQuality"/>
                             </MenuItem.Icon>
                         </MenuItem>
                         <MenuItem x:Name="AutoHorizonalRotate_Menu" Header="PDF智能横向旋转" ToolTip="判断PDF是否为横向，将所有纵向PDF（页面）旋转为横向" Click="AutoHorizonalRotate_Click">
                             <MenuItem.Icon>
-                                <Image Source="Icons/autohorizonalrotate.ico" Height="30"/>
+                                <Image Source="Icons/autohorizonalrotate.ico" Height="30" RenderOptions.BitmapScalingMode="HighQuality"/>
                             </MenuItem.Icon>
                         </MenuItem>
                         <MenuItem x:Name="AutoVerticalRotate_Menu" Header="PDF智能纵向旋转" ToolTip="判断PDF是否为纵向，将所有横向PDF（页面）旋转为横向" Click="AutoVerticalRotate_Click">
                             <MenuItem.Icon>
-                                <Image Source="Icons/autoverticalrotate.ico" Height="30"/>
+                                <Image Source="Icons/autoverticalrotate.ico" Height="30" RenderOptions.BitmapScalingMode="HighQuality"/>
                             </MenuItem.Icon>
                         </MenuItem>
                     </MenuItem>
                     <MenuItem Header="关于">
                         <MenuItem.Icon>
-                            <Image Source="Icons/about.ico" Height="30"/>
+                            <Image Source="Icons/about.ico" Height="30" RenderOptions.BitmapScalingMode="HighQuality"/>
                         </MenuItem.Icon>
                         <MenuItem x:Name="Help_Menu" Header="帮助" Click="Help_Click">
                             <MenuItem.Icon>
-                                <Image Source="Icons/help.ico" Height="30"/>
+                                <Image Source="Icons/help.ico" Height="30" RenderOptions.BitmapScalingMode="HighQuality"/>
                             </MenuItem.Icon>
                         </MenuItem>
                         <MenuItem x:Name="Register_Menu" Header="注册" Click="Register_Click">
                             <MenuItem.Icon>
-                                <Image Source="Icons/register.ico" Height="30"/>
+                                <Image Source="Icons/register.ico" Height="30" RenderOptions.BitmapScalingMode="HighQuality"/>
                             </MenuItem.Icon>
                         </MenuItem>
                         <MenuItem x:Name="Author_Menu" Header="关于作者" Click="Author_Click">
                             <MenuItem.Icon>
-                                <Image Source="Icons/author.ico" Height="30"/>
+                                <Image Source="Icons/author.ico" Height="30" RenderOptions.BitmapScalingMode="HighQuality"/>
                             </MenuItem.Icon>
                         </MenuItem>
                     </MenuItem>
