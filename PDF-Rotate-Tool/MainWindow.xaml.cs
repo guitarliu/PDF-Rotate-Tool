@@ -147,7 +147,7 @@ namespace PDF_Rotate_Tool
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void OneDirectRotate_Click(object sender, RoutedEventArgs e) 
+        private void ClockWise90Rotate_Click(object sender, RoutedEventArgs e) 
         {
             foreach (string item in PDFslbx.Items)
             {
@@ -157,8 +157,7 @@ namespace PDF_Rotate_Tool
                     PdfDocument document = PdfReader.Open(item, PdfDocumentOpenMode.Modify);
                     foreach (PdfPage page in document.Pages)
                     {
-                        MessageBox.Show($"{page.Width}|{page.Height}|{page.Rotate}");
-                        //page.Rotate = -90;
+                        page.Rotate += 90;
 
                     }
                     SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -168,8 +167,52 @@ namespace PDF_Rotate_Tool
                 {
                     MessageBox.Show("选择文件不存在或有误!");
                 }
+            }
+        }
 
+        private void CounterClockWise90Rotate_Click(object obj, RoutedEventArgs e)
+        {
+            foreach (string item in PDFslbx.Items)
+            {
+                Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+                try
+                {
+                    PdfDocument document = PdfReader.Open(item, PdfDocumentOpenMode.Modify);
+                    foreach (PdfPage page in document.Pages)
+                    {
+                        page.Rotate += -90;
 
+                    }
+                    SaveFileDialog saveFileDialog = new SaveFileDialog();
+                    document.Save(item);
+                }
+                catch
+                {
+                    MessageBox.Show("选择文件不存在或有误!");
+                }
+            }
+        }
+
+        private void Rotate180_Click(object sender, RoutedEventArgs e) 
+        {
+            foreach (string item in PDFslbx.Items)
+            {
+                Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+                try
+                {
+                    PdfDocument document = PdfReader.Open(item, PdfDocumentOpenMode.Modify);
+                    foreach (PdfPage page in document.Pages)
+                    {
+                        page.Rotate += 180;
+
+                    }
+                    SaveFileDialog saveFileDialog = new SaveFileDialog();
+                    document.Save(item);
+                }
+                catch
+                {
+                    MessageBox.Show("选择文件不存在或有误!");
+                }
             }
         }
 

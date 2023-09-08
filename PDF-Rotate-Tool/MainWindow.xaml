@@ -76,7 +76,17 @@
                         <MenuItem.Icon>
                             <Image Source="Icons/tool.ico" Height="30"/>
                         </MenuItem.Icon>
-                        <MenuItem x:Name="OneDirectRotate_Menu" Header="PDF统一方向旋转" ToolTip="将所有PDF向同一方向旋转" Click="OneDirectRotate_Click">
+                        <MenuItem x:Name="ClockWise90Rotate_Menu" Header="顺时针旋转90°" ToolTip="将所有PDF沿顺时针旋转90°" Click="ClockWise90Rotate_Click">
+                            <MenuItem.Icon>
+                                <Image Source="Icons/onedirectrotate.ico" Height="30"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem x:Name="CounterClockWise90Rotate_Menu" Header="逆时针旋转90°" ToolTip="将所有PDF沿逆时针旋转90°" Click="CounterClockWise90Rotate_Click">
+                            <MenuItem.Icon>
+                                <Image Source="Icons/onedirectrotate.ico" Height="30"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem x:Name="Rotate180_Menu" Header="旋转180°" ToolTip="将所有PDF旋转180°" Click="Rotate180_Click">
                             <MenuItem.Icon>
                                 <Image Source="Icons/onedirectrotate.ico" Height="30"/>
                             </MenuItem.Icon>
