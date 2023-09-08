@@ -14,12 +14,14 @@
     <None Remove="Icons\autohorizonalrotate.ico" />
     <None Remove="Icons\autoverticalrotate.ico" />
     <None Remove="Icons\close.ico" />
+    <None Remove="Icons\closewise90rotate.ico" />
+    <None Remove="Icons\counterclockwise90rotate.ico" />
     <None Remove="Icons\folders.ico" />
     <None Remove="Icons\help.ico" />
     <None Remove="Icons\logo.ico" />
-    <None Remove="Icons\onedirectrotate.ico" />
     <None Remove="Icons\open.ico" />
     <None Remove="Icons\register.ico" />
+    <None Remove="Icons\rotate180.ico" />
     <None Remove="Icons\tool.ico" />
   </ItemGroup>
 
@@ -49,6 +51,12 @@
     <Resource Include="Icons\close.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Icons\closewise90rotate.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\counterclockwise90rotate.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Icons\folders.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
@@ -58,13 +66,13 @@
     <Resource Include="Icons\logo.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Icons\onedirectrotate.ico">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
     <Resource Include="Icons\open.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Icons\register.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\rotate180.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Icons\tool.ico">
