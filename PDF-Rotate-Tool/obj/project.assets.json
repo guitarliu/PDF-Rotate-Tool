@@ -8,19 +8,24 @@
     "net6.0-windows7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\whuli\\.nuget\\packages\\": {}
+    "C:\\Users\\xwlva\\.nuget\\packages\\": {},
+    "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\whuli\\Desktop\\PDF-Rotate-Tool\\PDF-Rotate-Tool\\PDF-Rotate-Tool.csproj",
+      "projectUniqueName": "C:\\Users\\xwlva\\Desktop\\PDF-Rotate-Tool\\PDF-Rotate-Tool\\PDF-Rotate-Tool.csproj",
       "projectName": "PDF-Rotate-Tool",
-      "projectPath": "C:\\Users\\whuli\\Desktop\\PDF-Rotate-Tool\\PDF-Rotate-Tool\\PDF-Rotate-Tool.csproj",
-      "packagesPath": "C:\\Users\\whuli\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\whuli\\Desktop\\PDF-Rotate-Tool\\PDF-Rotate-Tool\\obj\\",
+      "projectPath": "C:\\Users\\xwlva\\Desktop\\PDF-Rotate-Tool\\PDF-Rotate-Tool\\PDF-Rotate-Tool.csproj",
+      "packagesPath": "C:\\Users\\xwlva\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\xwlva\\Desktop\\PDF-Rotate-Tool\\PDF-Rotate-Tool\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\whuli\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\xwlva\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -64,7 +69,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
       }
     }
   }

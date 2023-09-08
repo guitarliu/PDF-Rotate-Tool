@@ -57,7 +57,6 @@ namespace PDF_Rotate_Tool
 
         private void PDFList_Drop(object sender, DragEventArgs e)
         {
-            TbkAnnotion.Visibility = Visibility.Hidden;
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
             {
                 string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
@@ -78,7 +77,6 @@ namespace PDF_Rotate_Tool
 
         private void PDFList_Click(object sender, RoutedEventArgs e)
         {
-            TbkAnnotion.Visibility = Visibility.Hidden;
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             dialog.Multiselect = true;
@@ -99,11 +97,6 @@ namespace PDF_Rotate_Tool
                     }
                 }
             }
-        }
-
-        private void PDFList_GotFocus(object sender, RoutedEventArgs e) 
-        {
-            TbkAnnotion.Visibility= Visibility.Visible;
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e) 
@@ -141,6 +134,24 @@ namespace PDF_Rotate_Tool
         private void Close_Menu_Click(object sender, RoutedEventArgs e)
         {
             this.WindowState = WindowState.Minimized;
+        }
+
+        private void OneDirectRotate_Click(object sender, RoutedEventArgs e) 
+        {
+            foreach (string item in PDFslbx.Items)
+            {
+                MessageBox.Show(item);
+            }
+        }
+
+        private void AutoHorizonalRotate_Click(Object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void AutoVerticalRotate_Click(object sender, RoutedEventArgs e) 
+        {
+
         }
 
         private void Help_Click(object sender, RoutedEventArgs e)

@@ -42,3 +42,5 @@ C:\Users\whuli\Desktop\PDF-Rotate-Tool\PDF-Rotate-Tool\obj\Debug\net6.0-windows\
 C:\Users\whuli\Desktop\PDF-Rotate-Tool\PDF-Rotate-Tool\obj\Debug\net6.0-windows\ref\PDF-Rotate-Tool.dll
 C:\Users\whuli\Desktop\PDF-Rotate-Tool\PDF-Rotate-Tool\obj\Debug\net6.0-windows\HelpWindow.g.cs
 C:\Users\whuli\Desktop\PDF-Rotate-Tool\PDF-Rotate-Tool\obj\Debug\net6.0-windows\HelpWindow.baml
+C:\Users\xwlva\Desktop\PDF-Rotate-Tool\PDF-Rotate-Tool\obj\Debug\net6.0-windows\HelpWindow.g.cs
+C:\Users\xwlva\Desktop\PDF-Rotate-Tool\PDF-Rotate-Tool\obj\Debug\net6.0-windows\HelpWindow.baml

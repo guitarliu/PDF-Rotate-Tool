@@ -76,17 +76,17 @@
                         <MenuItem.Icon>
                             <Image Source="Icons/tool.ico" Height="30"/>
                         </MenuItem.Icon>
-                        <MenuItem x:Name="OneDirectRotate_Menu" Header="PDF统一方向旋转" ToolTip="将所有PDF向同一方向旋围">
+                        <MenuItem x:Name="OneDirectRotate_Menu" Header="PDF统一方向旋转" ToolTip="将所有PDF向同一方向旋转" Click="OneDirectRotate_Click">
                             <MenuItem.Icon>
                                 <Image Source="Icons/onedirectrotate.ico" Height="30"/>
                             </MenuItem.Icon>
                         </MenuItem>
-                        <MenuItem x:Name="AutoHorizonalRotate_Menu" Header="PDF智能横向旋转" ToolTip="判断PDF是否为横向，将所有纵向PDF（页面）旋转为横向">
+                        <MenuItem x:Name="AutoHorizonalRotate_Menu" Header="PDF智能横向旋转" ToolTip="判断PDF是否为横向，将所有纵向PDF（页面）旋转为横向" Click="AutoHorizonalRotate_Click">
                             <MenuItem.Icon>
                                 <Image Source="Icons/autohorizonalrotate.ico" Height="30"/>
                             </MenuItem.Icon>
                         </MenuItem>
-                        <MenuItem x:Name="AutoVerticalRotate_Menu" Header="PDF智能纵向旋转" ToolTip="判断PDF是否为纵向，将所有横向PDF（页面）旋转为横向">
+                        <MenuItem x:Name="AutoVerticalRotate_Menu" Header="PDF智能纵向旋转" ToolTip="判断PDF是否为纵向，将所有横向PDF（页面）旋转为横向" Click="AutoVerticalRotate_Click">
                             <MenuItem.Icon>
                                 <Image Source="Icons/autoverticalrotate.ico" Height="30"/>
                             </MenuItem.Icon>
@@ -129,7 +129,20 @@
                 </ListBox>
                 <TextBlock x:Name="TbkAnnotion" Text="拖拽或双击加载PDF文件" VerticalAlignment="Center" HorizontalAlignment="Center"
                            Margin="0,-50,0,0" FontStyle="Italic" FontSize="17" FontWeight="DemiBold"
-                           Opacity="0.3"/>
+                           Opacity="0.3">
+                    <TextBlock.Style>
+                        <Style TargetType="TextBlock">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding ElementName=PDFslbx,Path=Items.Count}" Value="0">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding ElementName=PDFslbx,Path=Items.Count}" Value="1">
+                                    <Setter Property="Visibility" Value="Hidden"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
             </Grid>        
         </Grid>
     </Border>
