@@ -25,7 +25,7 @@
             </Grid>
             <GridSplitter Background="Transparent" BorderBrush="Gray" BorderThickness="0,0,0,0.5" IsEnabled="False" VerticalAlignment="Bottom" HorizontalAlignment="Stretch"/>
             <Grid Grid.Row="1">
-                <Label Content="本机识别码：" Background="Transparent"
+                <Label x:Name="Lbl_MachineID" Content="本机识别码：" Background="Transparent"
                        HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,8,0,0"
                        HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
                        Width="65" Height="22" FontSize="10" FontWeight="Medium"/>
@@ -35,7 +35,7 @@
                        Width="65" Height="22" FontSize="10" FontWeight="Medium"/>
                 <Border Width="200" Height="75" CornerRadius="7" Background="White"
                         Margin="65,36,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
-                    <TextBox AcceptsReturn="False" Width="190" Height="75" 
+                    <TextBox x:Name="Tbx_RegisterCode" AcceptsReturn="False" Width="190" Height="75" 
                          HorizontalAlignment="Center" VerticalAlignment="Center"
                          HorizontalContentAlignment="Left" VerticalContentAlignment="Top"
                          Background="Transparent" BorderThickness="0" TextWrapping="Wrap"/>
@@ -45,21 +45,24 @@
                         CornerRadius="5" Background="#0575E6">
                     <Button x:Name="Bt_How_Register" Background="Transparent"
                             BorderBrush="Transparent" BorderThickness="0"
-                            Width="70" Height="20" Content="如 何 注 册" FontSize="10"/>
+                            Width="70" Height="20" Content="如 何 注 册" FontSize="10"
+                            HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="Bt_How_Register_Click"/>
                 </Border>
                 <Border Margin="125,130,0,0" Width="50" Height="20"
                         HorizontalAlignment="Left" VerticalAlignment="Top"
                         CornerRadius="5" Background="#0575E6">
                     <Button x:Name="Bt_Ok" Background="Transparent"
                             BorderBrush="Transparent" BorderThickness="0"
-                            Width="50" Height="20" Content="Ok" FontSize="10"/>
+                            Width="50" Height="20" Content="Ok" FontSize="10"
+                            HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="Bt_Ok_Click"/>
                 </Border>
                 <Border Margin="205,130,0,0" Width="50" Height="20"
                         HorizontalAlignment="Left" VerticalAlignment="Top"
                         CornerRadius="5" Background="#0575E6">
                     <Button x:Name="Bt_Cancel" Background="Transparent" 
                             BorderBrush="Transparent" BorderThickness="0"
-                            Width="50" Height="20" Content="Cancel" FontSize="10"/>
+                            Width="50" Height="20" Content="Cancel" FontSize="10"
+                            HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="Bt_Cancel_Click"/>
                 </Border>
             </Grid>
         </Grid>
