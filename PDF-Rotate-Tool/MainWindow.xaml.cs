@@ -227,9 +227,9 @@ namespace PDF_Rotate_Tool
                     PdfDocument document = PdfReader.Open(item, PdfDocumentOpenMode.Modify);
                     foreach (PdfPage page in document.Pages)
                     {
-                        if (page.Rotate != 90 || page.Rotate != 270)
+                        if (page.Rotate != 90)
                         {
-                            page.Rotate = 180;
+                            page.Rotate = 90;
                         }
                     }
                     SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -252,9 +252,9 @@ namespace PDF_Rotate_Tool
                     PdfDocument document = PdfReader.Open(item, PdfDocumentOpenMode.Modify);
                     foreach (PdfPage page in document.Pages)
                     {
-                        if (page.Rotate != 0 || page.Rotate != 270)
+                        if (page.Rotate != 0)
                         {
-                            page.Rotate = 180;
+                            page.Rotate = 0;
                         }
                     }
                     SaveFileDialog saveFileDialog = new SaveFileDialog();

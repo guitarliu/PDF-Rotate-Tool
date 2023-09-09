@@ -27,7 +27,7 @@
 
   <ItemGroup>
     <Reference Include="PdfSharp">
-      <HintPath>..\..\..\Downloads\PDFsharp-MigraDocFoundation-1_50-beta5\PDFsharp\src\PdfSharp\bin\Release\PdfSharp.dll</HintPath>
+      <HintPath>bin\Debug\net6.0-windows\PdfSharp.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
