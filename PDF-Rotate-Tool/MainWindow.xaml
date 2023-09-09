@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PDF_Rotate_Tool"
         mc:Ignorable="d"
         Height="450" Width="800" MinHeight="300" MinWidth="500"
-        Icon="/Icons/logo.ico"
+        Icon="/Icons/logo.ico" Title="PDF-Rotate-Tool"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         BorderThickness="0" AllowDrop="True" BorderBrush="Transparent"

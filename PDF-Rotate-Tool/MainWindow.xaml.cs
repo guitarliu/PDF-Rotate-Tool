@@ -270,7 +270,8 @@ namespace PDF_Rotate_Tool
 
         private void Register_Click(object sender, RoutedEventArgs e) 
         {
-            MessageBox.Show("请输入注册码!");
+            Window registerWindow = new RegisterWindow();
+            registerWindow.ShowDialog();
         }
         private void Author_Click(object sender, RoutedEventArgs e)
         {
