@@ -161,7 +161,6 @@ namespace PDF_Rotate_Tool
                         page.Rotate += 90;
 
                     }
-                    SaveFileDialog saveFileDialog = new SaveFileDialog();
                     document.Save(item);
                 }
                 catch 
@@ -184,7 +183,6 @@ namespace PDF_Rotate_Tool
                         page.Rotate += -90;
 
                     }
-                    SaveFileDialog saveFileDialog = new SaveFileDialog();
                     document.Save(item);
                 }
                 catch
@@ -207,7 +205,6 @@ namespace PDF_Rotate_Tool
                         page.Rotate += 180;
 
                     }
-                    SaveFileDialog saveFileDialog = new SaveFileDialog();
                     document.Save(item);
                 }
                 catch
@@ -232,7 +229,6 @@ namespace PDF_Rotate_Tool
                             page.Rotate = 90;
                         }
                     }
-                    SaveFileDialog saveFileDialog = new SaveFileDialog();
                     document.Save(item);
                 }
                 catch
@@ -257,7 +253,6 @@ namespace PDF_Rotate_Tool
                             page.Rotate = 0;
                         }
                     }
-                    SaveFileDialog saveFileDialog = new SaveFileDialog();
                     document.Save(item);
                 }
                 catch
