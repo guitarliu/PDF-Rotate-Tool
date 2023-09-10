@@ -23,6 +23,11 @@
     <None Remove="Icons\register.ico" />
     <None Remove="Icons\rotate180.ico" />
     <None Remove="Icons\tool.ico" />
+    <None Remove="Register.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Management" Version="7.0.2" />
   </ItemGroup>
 
   <ItemGroup>

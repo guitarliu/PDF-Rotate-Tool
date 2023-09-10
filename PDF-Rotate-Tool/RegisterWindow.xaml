@@ -26,9 +26,10 @@
             <GridSplitter Background="Transparent" BorderBrush="Gray" BorderThickness="0,0,0,0.5" IsEnabled="False" VerticalAlignment="Bottom" HorizontalAlignment="Stretch"/>
             <Grid Grid.Row="1">
                 <Label x:Name="Lbl_MachineID" Content="本机识别码：" Background="Transparent"
+                       BorderBrush="Transparent" BorderThickness="0" 
                        HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,8,0,0"
                        HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
-                       Width="65" Height="22" FontSize="10" FontWeight="Medium"/>
+                       Width="260" Height="22" FontSize="10" FontWeight="Medium"/>
                 <Label Content="注册码：" Background="Transparent"
                        HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,30,0,0"
                        HorizontalContentAlignment="Right" VerticalContentAlignment="Center"
@@ -36,7 +37,7 @@
                 <Border Width="200" Height="75" CornerRadius="7" Background="White"
                         Margin="65,36,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
                     <TextBox x:Name="Tbx_RegisterCode" AcceptsReturn="False" Width="190" Height="75" 
-                         HorizontalAlignment="Center" VerticalAlignment="Center"
+                         HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="10"
                          HorizontalContentAlignment="Left" VerticalContentAlignment="Top"
                          Background="Transparent" BorderThickness="0" TextWrapping="Wrap"/>
                 </Border>
