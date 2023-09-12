@@ -11,6 +11,7 @@ using System.Net.NetworkInformation;
 using System.Security.Cryptography;
 using System.IO;
 using System.Reflection.PortableExecutable;
+using System.Threading.Tasks;
 
 namespace PDF_Rotate_Tool
 {
@@ -23,24 +24,7 @@ namespace PDF_Rotate_Tool
         {
             InitializeComponent();
 
-            // Read Register File to check whether RegisterCode is matched with MachineID
-            string registerFilePath = AppDomain.CurrentDomain.BaseDirectory + @"..\\..\\..\\Register.txt";
-            if (!File.Exists(registerFilePath) || new FileInfo(registerFilePath).Length == 0)
-            {
-                using (StreamWriter writer = new StreamWriter(registerFilePath, true, Encoding.UTF8))
-                {
-                    writer.WriteLine(Get_MachineID() + "\n");
-                }
-            }
-            else
-            {
-                /* 
-                 * Check whether current MachineID is matched Register.txt's MachineID
-                 * If Matched, then Check whether MachineID is matched RegisterCode
-                 * If Not Matched, then Replace Register.txt's MachineID and 
-                 * reinput registercode to Active
-                */
-            }
+            CheckRegisterInfo();
         }
         private void DragWindow(object sender, MouseButtonEventArgs e)
         {
@@ -67,7 +51,7 @@ namespace PDF_Rotate_Tool
 
         private void Bt_Maximum_Click(object sender, RoutedEventArgs e)
         {
-            if (this.WindowState == WindowState.Normal) 
+            if (this.WindowState == WindowState.Normal)
             {
                 this.WindowState = WindowState.Maximized;
             }
@@ -121,7 +105,7 @@ namespace PDF_Rotate_Tool
             }
         }
 
-        private void Delete_Click(object sender, RoutedEventArgs e) 
+        private void Delete_Click(object sender, RoutedEventArgs e)
         {
             while (PDFslbx.SelectedIndex != -1)
             {
@@ -167,12 +151,12 @@ namespace PDF_Rotate_Tool
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ClockWise90Rotate_Click(object sender, RoutedEventArgs e) 
+        private void ClockWise90Rotate_Click(object sender, RoutedEventArgs e)
         {
             foreach (string item in PDFslbx.Items)
             {
                 Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-                try 
+                try
                 {
                     PdfDocument document = PdfReader.Open(item, PdfDocumentOpenMode.Modify);
                     foreach (PdfPage page in document.Pages)
@@ -182,7 +166,7 @@ namespace PDF_Rotate_Tool
                     }
                     document.Save(item);
                 }
-                catch 
+                catch
                 {
                     MessageBox.Show("选择文件不存在或有误!");
                 }
@@ -211,7 +195,7 @@ namespace PDF_Rotate_Tool
             }
         }
 
-        private void Rotate180_Click(object sender, RoutedEventArgs e) 
+        private void Rotate180_Click(object sender, RoutedEventArgs e)
         {
             foreach (string item in PDFslbx.Items)
             {
@@ -257,7 +241,7 @@ namespace PDF_Rotate_Tool
             }
         }
 
-        private void AutoVerticalRotate_Click(object sender, RoutedEventArgs e) 
+        private void AutoVerticalRotate_Click(object sender, RoutedEventArgs e)
         {
             foreach (string item in PDFslbx.Items)
             {
@@ -289,12 +273,51 @@ namespace PDF_Rotate_Tool
 
         private void Register_Click(object sender, RoutedEventArgs e) 
         {
-            Window registerWindow = new RegisterWindow();
+            RegisterWindow registerWindow = new RegisterWindow();
+            registerWindow.Tbx_MachineID.Text = Get_MachineID().GetAwaiter().GetResult();
             registerWindow.ShowDialog();
         }
         private void Author_Click(object sender, RoutedEventArgs e)
         {
             Process.Start(new ProcessStartInfo("https://www.notion.so/55a9daf124ea47b18d0322aca011d4dd?pvs=4") { UseShellExecute = true });
+        }
+
+        // Get CPUID
+        private static async Task<string> GetCPUIDAsync()
+        {
+            ManagementClass mc = new ManagementClass("Win32_Processor");
+            ManagementObjectCollection moc = mc.GetInstances();
+            foreach (ManagementObject mo in moc)
+            {
+                return mo.Properties["ProcessorId"].Value.ToString();
+            }
+            return string.Empty;
+        }
+
+        // Get DiskID
+        private static async Task<string> GetDiskIDAsync()
+        {
+            ManagementClass mc3 = new ManagementClass("Win32_PhysicalMedia");
+            ManagementObjectCollection moc3 = mc3.GetInstances();
+            foreach (ManagementObject mo in moc3)
+            {
+                return mo.Properties["SerialNumber"].Value.ToString().Replace(" ", "");
+            }
+            return string.Empty;
+        }
+
+        // Get Mac Address
+        private static async Task<string> GetMacAddressAsync()
+        {
+            NetworkInterface[] networkInterfaces = NetworkInterface.GetAllNetworkInterfaces();
+            foreach (NetworkInterface networkInterface in networkInterfaces)
+            {
+                if (networkInterface.OperationalStatus == OperationalStatus.Up)
+                {
+                    return networkInterface.GetPhysicalAddress().ToString();
+                }
+            }
+            return string.Empty;
         }
 
         /// <summary>
@@ -303,40 +326,53 @@ namespace PDF_Rotate_Tool
         /// Check whether RegisterCode is matched MachineID
         /// </summary>
         /// <returns></returns>
-        private static string Get_MachineID()
+        private static async Task<string> Get_MachineID()
         {
-            string machineID = null;
+            string machineID = "";
 
-            // Get CPUID
-            ManagementClass mc = new ManagementClass("Win32_Processor");
-            ManagementObjectCollection moc = mc.GetInstances();
-            foreach (ManagementObject mo in moc)
-            {
-                machineID += mo.Properties["ProcessorId"].Value.ToString();
-                break;
-            }
+            // Get CPUID asynchronously
+            machineID += await GetCPUIDAsync();
 
-            // Get DiskID
-            ManagementClass mc3 = new ManagementClass("Win32_PhysicalMedia");
-            ManagementObjectCollection moc3 = mc3.GetInstances();
-            foreach (ManagementObject mo in moc3)
-            {
-                machineID += mo.Properties["SerialNumber"].Value.ToString().Replace(" ", "");
-                break;
-            }
+            // Get DiskID asynchronously
+            machineID += await GetDiskIDAsync();
 
-            // Get Mac Address
-            NetworkInterface[] networkInterfaces = NetworkInterface.GetAllNetworkInterfaces();
-            foreach (NetworkInterface networkInterface in networkInterfaces)
-            {
-                if (networkInterface.OperationalStatus == OperationalStatus.Up)
-                {
-                    machineID += networkInterface.GetPhysicalAddress().ToString();
-                    break; 
-                }
-            }
+            // Get Mac Address asynchronously
+            machineID += await GetMacAddressAsync();
 
             return machineID;
+        }
+
+        private async void Init_RegisterWindow()
+        {
+            // Delay Opration, wait 5 seconds
+            await Task.Delay(TimeSpan.FromSeconds(3));
+
+            RegisterWindow registerWindow = new RegisterWindow();
+            registerWindow.Tbx_MachineID.Text = Get_MachineID().GetAwaiter().GetResult();
+            registerWindow.ShowDialog();
+        }
+        private async void CheckRegisterInfo()
+        {
+            // Read Register File to check whether RegisterCode is matched with MachineID
+            string registerFilePath = AppDomain.CurrentDomain.BaseDirectory + @"..\\..\\..\\Register.txt";
+            if (!File.Exists(registerFilePath) || new FileInfo(registerFilePath).Length == 0)
+            {
+                using (StreamWriter writer = new StreamWriter(registerFilePath, true, Encoding.UTF8))
+                {
+                    writer.WriteLine(Get_MachineID() + "\n");
+                }
+
+                Init_RegisterWindow();
+            }
+            else
+            {
+                /* 
+                 * Check whether current MachineID is matched Register.txt's MachineID
+                 * If Matched, then Check whether MachineID is matched RegisterCode
+                 * If Not Matched, then Replace Register.txt's MachineID and 
+                 * reinput registercode to Active
+                */
+            }
         }
     }
 }
