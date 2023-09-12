@@ -23,17 +23,13 @@ namespace PDF_Rotate_Tool
         {
             InitializeComponent();
 
-            // Set RegisterWindow's machineID_str with EncryptMachineID
-            RegisterWindow registerWindow = new RegisterWindow();
-            registerWindow.machineID_str = EncryptMachineID(Get_MachineID());
-
             // Read Register File to check whether RegisterCode is matched with MachineID
-            string registerFilePath = AppDomain.CurrentDomain.BaseDirectory + @"..\\..\\Register.txt";
+            string registerFilePath = AppDomain.CurrentDomain.BaseDirectory + @"..\\..\\..\\Register.txt";
             if (!File.Exists(registerFilePath) || new FileInfo(registerFilePath).Length == 0)
             {
                 using (StreamWriter writer = new StreamWriter(registerFilePath, true, Encoding.UTF8))
                 {
-                    writer.WriteLine(EncryptMachineID(Get_MachineID()) + "\n");
+                    writer.WriteLine(Get_MachineID() + "\n");
                 }
             }
             else
@@ -341,50 +337,6 @@ namespace PDF_Rotate_Tool
             }
 
             return machineID;
-        }
-        /// <summary>
-        /// Encrypt MachineID
-        /// </summary>
-        /// <param name="machineID"></param>
-        /// <returns></returns>
-        private static string EncryptMachineID(string machineID)
-        {
-            using (Aes aesAlg = Aes.Create())
-            {
-                byte[] randomKey = new byte[16];
-                using (RandomNumberGenerator rng = RandomNumberGenerator.Create()) 
-                {
-                    rng.GetBytes(randomKey);
-                }
-
-                byte[] randomIV = new byte[16];
-                using (RandomNumberGenerator rng = RandomNumberGenerator.Create())
-                {
-                    rng.GetBytes(randomIV);
-                }
-
-                aesAlg.Key = randomKey;
-                aesAlg.IV = randomIV;
-
-                // Create A encryptor
-                ICryptoTransform encryptor = aesAlg.CreateEncryptor(aesAlg.Key, aesAlg.IV);
-
-                // Create A MemoryStream
-                using (MemoryStream msEncrypt = new MemoryStream())
-                {
-                    // Create A CryptoStream
-                    using (CryptoStream csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
-                    {
-                        using (StreamWriter swEncrypt = new StreamWriter(csEncrypt))
-                        {
-                            // Write Machine to CryptoStream
-                            swEncrypt.Write(machineID);
-                        }
-                    }
-                    // Return Encrypt Data
-                    return Convert.ToBase64String(msEncrypt.ToArray());
-                }
-            }
         }
     }
 }

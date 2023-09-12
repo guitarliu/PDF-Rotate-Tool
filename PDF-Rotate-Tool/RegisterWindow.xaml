@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PDF_Rotate_Tool"
         mc:Ignorable="d"
-        Title="注册" Height="200" Width="280" Icon="Icons/register.ico"
+        Title="注册" Height="200" Width="350" Icon="Icons/register.ico"
         Background="Transparent" BorderThickness="0" BorderBrush="Transparent"
         WindowStyle="None" AllowDrop="True" AllowsTransparency="True"
         MouseLeftButtonDown="DragWindow" ResizeMode="NoResize"
@@ -29,19 +29,24 @@
                        BorderBrush="Transparent" BorderThickness="0" 
                        HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,8,0,0"
                        HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
-                       Width="260" Height="22" FontSize="10" FontWeight="Medium"/>
+                       Width="65" Height="22" FontSize="10" FontWeight="Medium"/>
+                <TextBox x:Name="Tbx_MachineID" Background="Transparent"
+                       BorderBrush="Transparent" BorderThickness="0" 
+                       HorizontalAlignment="Left" VerticalAlignment="Top" Margin="70,8,0,0"
+                       HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+                       Width="265" Height="22" FontSize="10" FontWeight="Medium"/>
                 <Label Content="注册码：" Background="Transparent"
-                       HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,30,0,0"
+                       HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,30,0,0"
                        HorizontalContentAlignment="Right" VerticalContentAlignment="Center"
                        Width="65" Height="22" FontSize="10" FontWeight="Medium"/>
-                <Border Width="200" Height="75" CornerRadius="7" Background="White"
-                        Margin="65,36,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
-                    <TextBox x:Name="Tbx_RegisterCode" AcceptsReturn="False" Width="190" Height="75" 
+                <Border Width="265" Height="75" CornerRadius="7" Background="White"
+                        Margin="70,36,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <TextBox x:Name="Tbx_RegisterCode" AcceptsReturn="False" Width="255" Height="75" 
                          HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="10"
                          HorizontalContentAlignment="Left" VerticalContentAlignment="Top"
                          Background="Transparent" BorderThickness="0" TextWrapping="Wrap"/>
                 </Border>
-                <Border Margin="25,130,0,0" Width="70" Height="20"
+                <Border Margin="45,130,0,0" Width="70" Height="20"
                         HorizontalAlignment="Left" VerticalAlignment="Top"
                         CornerRadius="5" Background="#0575E6">
                     <Button x:Name="Bt_How_Register" Background="Transparent"
@@ -49,7 +54,7 @@
                             Width="70" Height="20" Content="如 何 注 册" FontSize="10"
                             HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="Bt_How_Register_Click"/>
                 </Border>
-                <Border Margin="125,130,0,0" Width="50" Height="20"
+                <Border Margin="160,130,0,0" Width="50" Height="20"
                         HorizontalAlignment="Left" VerticalAlignment="Top"
                         CornerRadius="5" Background="#0575E6">
                     <Button x:Name="Bt_Ok" Background="Transparent"
@@ -57,7 +62,7 @@
                             Width="50" Height="20" Content="Ok" FontSize="10"
                             HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="Bt_Ok_Click"/>
                 </Border>
-                <Border Margin="205,130,0,0" Width="50" Height="20"
+                <Border Margin="255,130,0,0" Width="50" Height="20"
                         HorizontalAlignment="Left" VerticalAlignment="Top"
                         CornerRadius="5" Background="#0575E6">
                     <Button x:Name="Bt_Cancel" Background="Transparent" 

@@ -24,9 +24,6 @@ namespace PDF_Rotate_Tool
         public RegisterWindow()
         {
             InitializeComponent();
-
-            // Set RegisterWindow's Lbl_MachineID content with machineID_str
-            Lbl_MachineID.Content += "hello,world,whatfuck";
         }
         private void DragWindow(object sender, MouseButtonEventArgs e)
         {
