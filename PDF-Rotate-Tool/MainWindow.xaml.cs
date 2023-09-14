@@ -12,6 +12,7 @@ using System.Security.Cryptography;
 using System.IO;
 using System.Reflection.PortableExecutable;
 using System.Threading.Tasks;
+using System.Resources;
 
 namespace PDF_Rotate_Tool
 {
@@ -20,11 +21,22 @@ namespace PDF_Rotate_Tool
     /// </summary>
     public partial class MainWindow : Window
     {
+        // Define a delegate type for closing the main window
+        public delegate void CloseMainWindowDelegate();
         public MainWindow()
         {
             InitializeComponent();
 
             CheckRegisterInfo();
+        }
+
+        // Declare an event to trigger when the main window should be closed
+        public event CloseMainWindowDelegate CloseMainWindowEvent;
+
+        // Method for closing the main window
+        public void CloseMainWindow()
+        {
+            Close();
         }
         private void DragWindow(object sender, MouseButtonEventArgs e)
         {
@@ -345,11 +357,34 @@ namespace PDF_Rotate_Tool
         private async void Init_RegisterWindow()
         {
             // Delay Opration, wait 5 seconds
-            await Task.Delay(TimeSpan.FromSeconds(3));
+            await Task.Delay(TimeSpan.FromSeconds(1));
 
             RegisterWindow registerWindow = new RegisterWindow();
             registerWindow.Tbx_MachineID.Text = Get_MachineID().GetAwaiter().GetResult();
             registerWindow.ShowDialog();
+
+            // Create an instance of ResourceManager, specifying the name of the resource file and the assembly that contains it
+            ResourceManager resourceManager = new ResourceManager("PDF_Rotate_Tool.ResourcePublicKey", typeof(ResourcePublicKey).Assembly);
+
+            // Retrieve the string using the GetString method, where "publickey" is the key for the string you set in ResourcePublicKey.resx
+            string publickey = resourceManager.GetString("publickey");
+
+            // Get RegisterCode from RegisterWindow
+            string activationCode = registerWindow.Tbx_RegisterCode.Text;
+
+            // Verify activationCode
+            bool isValid = VerifyActivationCode(Get_MachineID().GetAwaiter().GetResult(), publickey, activationCode);
+
+            if (isValid)
+            {
+                // Activate Program
+                MessageBox.Show("注册成功!", "注册信息", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                // Failure Activating Program 
+                MessageBox.Show("注册失败!!", "注册信息", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
         private async void CheckRegisterInfo()
         {
@@ -359,7 +394,7 @@ namespace PDF_Rotate_Tool
             {
                 using (StreamWriter writer = new StreamWriter(registerFilePath, true, Encoding.UTF8))
                 {
-                    writer.WriteLine(Get_MachineID() + "\n");
+                    writer.WriteLine(Get_MachineID().GetAwaiter().GetResult() + "\n");
                 }
 
                 Init_RegisterWindow();
@@ -372,6 +407,48 @@ namespace PDF_Rotate_Tool
                  * If Not Matched, then Replace Register.txt's MachineID and 
                  * reinput registercode to Active
                 */
+            }
+        }
+
+        /// <summary>
+        /// Verify ActivationCode using publicKey and actiationCode
+        /// </summary>
+        /// <param name="publicKey"></param>
+        /// <param name="activationCode"></param>
+        /// <returns></returns>
+        public static bool VerifyActivationCode(string machineID, string publicKey, string activationCode)
+        {
+            try
+            {
+                using (RSACryptoServiceProvider rsa = new RSACryptoServiceProvider())
+                {
+                    rsa.FromXmlString(publicKey);
+
+                    // Convert machineID to bytes
+                    byte[] machineIDBytes = Encoding.UTF8.GetBytes(machineID);
+
+                    // Convert activatationCode's Base64 string to bytes
+                    byte[] signatureBytes = Convert.FromBase64String(activationCode);
+
+                    // Create an instance of SHA256
+                    using (SHA256 sha256 = SHA256.Create())
+                    {
+                        // Compute the hash of the machineIDBytes
+                        byte[] hashBytes = sha256.ComputeHash(machineIDBytes);
+
+                        // Use RSA public key to verify the signature
+                        bool isSignatureValid = rsa.VerifyData(hashBytes, CryptoConfig.MapNameToOID("SHA256"), signatureBytes);
+
+                        return isSignatureValid;
+                    }
+                }
+
+            }
+            catch (CryptographicException ex)
+            {
+                // Verify Failure
+                Console.WriteLine("注册码无效: " + ex.Message);
+                return false;
             }
         }
     }

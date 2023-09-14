@@ -1,17 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using System.Resources;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace PDF_Rotate_Tool
 {
@@ -25,6 +18,7 @@ namespace PDF_Rotate_Tool
         {
             InitializeComponent();
         }
+
         private void DragWindow(object sender, MouseButtonEventArgs e)
         {
             try
@@ -36,6 +30,76 @@ namespace PDF_Rotate_Tool
                 //throw;
             }
         }
+
+        private async void Init_RegisterWindow()
+        {
+            // Create an instance of ResourceManager, specifying the name of the resource file and the assembly that contains it
+            ResourceManager resourceManager = new ResourceManager("PDF_Rotate_Tool.ResourcePublicKey", typeof(ResourcePublicKey).Assembly);
+
+            // Retrieve the string using the GetString method, where "publickey" is the key for the string you set in ResourcePublicKey.resx
+            string publickey = resourceManager.GetString("publickey");
+
+            // Get RegisterCode from RegisterWindow
+            string activationCode = Tbx_RegisterCode.Text;
+
+            // Verify activationCode
+            bool isValid = VerifyActivationCode(Tbx_MachineID.Text, publickey, activationCode);
+
+            if (isValid)
+            {
+                // Activate Program
+                MessageBox.Show("注册成功!", "注册信息", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                // Failure Activating Program 
+                MessageBox.Show("注册失败!!", "注册失败", MessageBoxButton.OK, MessageBoxImage.Error);
+                this.Close();
+
+                // Trigger the delegate event to close the main window
+                if (Application.Current.MainWindow is MainWindow mainWindow)
+                {
+                    mainWindow.CloseMainWindowEvent?.Invoke();
+                }
+            }
+        }
+
+        public static bool VerifyActivationCode(string machineID, string publicKey, string activationCode)
+        {
+            try
+            {
+                using (RSACryptoServiceProvider rsa = new RSACryptoServiceProvider())
+                {
+                    rsa.FromXmlString(publicKey);
+
+                    // Convert machineID to bytes
+                    byte[] machineIDBytes = Encoding.UTF8.GetBytes(machineID);
+
+                    // Convert activatationCode's Base64 string to bytes
+                    byte[] signatureBytes = Convert.FromBase64String(activationCode);
+
+                    // Create an instance of SHA256
+                    using (SHA256 sha256 = SHA256.Create())
+                    {
+                        // Compute the hash of the machineIDBytes
+                        byte[] hashBytes = sha256.ComputeHash(machineIDBytes);
+
+                        // Use RSA public key to verify the signature
+                        bool isSignatureValid = rsa.VerifyData(hashBytes, CryptoConfig.MapNameToOID("SHA256"), signatureBytes);
+
+                        return isSignatureValid;
+                    }
+                }
+
+            }
+            catch (CryptographicException ex)
+            {
+                // Verify Failure
+                Console.WriteLine("注册码无效: " + ex.Message);
+                return false;
+            }
+        }
+
 
         private void Bt_Close_Click(object sender, RoutedEventArgs e)
         {
@@ -52,6 +116,7 @@ namespace PDF_Rotate_Tool
             // Check whether Register Code is matched MachineID
             // True, Close this window
             // False, Show Alert MessageBox
+            Init_RegisterWindow();
         }
 
         private void Bt_Cancel_Click(object sender, RoutedEventArgs e)

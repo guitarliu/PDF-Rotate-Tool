@@ -59,3 +59,8 @@ C:\Users\xwlva\Desktop\PDF-Rotate-Tool\PDF-Rotate-Tool\obj\Debug\net6.0-windows\
 C:\Users\xwlva\Desktop\PDF-Rotate-Tool\PDF-Rotate-Tool\bin\Debug\net6.0-windows\System.CodeDom.dll
 C:\Users\xwlva\Desktop\PDF-Rotate-Tool\PDF-Rotate-Tool\bin\Debug\net6.0-windows\System.Management.dll
 C:\Users\xwlva\Desktop\PDF-Rotate-Tool\PDF-Rotate-Tool\bin\Debug\net6.0-windows\runtimes\win\lib\net6.0\System.Management.dll
+C:\Users\whuli\Desktop\PDF-Rotate-Tool\PDF-Rotate-Tool\bin\Debug\net6.0-windows\System.CodeDom.dll
+C:\Users\whuli\Desktop\PDF-Rotate-Tool\PDF-Rotate-Tool\bin\Debug\net6.0-windows\System.Management.dll
+C:\Users\whuli\Desktop\PDF-Rotate-Tool\PDF-Rotate-Tool\bin\Debug\net6.0-windows\runtimes\win\lib\net6.0\System.Management.dll
+C:\Users\whuli\Desktop\PDF-Rotate-Tool\PDF-Rotate-Tool\obj\Debug\net6.0-windows\PDF_Rotate_Tool.ResourcePublicKey.resources
+C:\Users\whuli\Desktop\PDF-Rotate-Tool\PDF-Rotate-Tool\obj\Debug\net6.0-windows\PDF-Rotate-Tool.csproj.GenerateResource.cache
