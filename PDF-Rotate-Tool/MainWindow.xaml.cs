@@ -29,15 +29,6 @@ namespace PDF_Rotate_Tool
 
             CheckRegisterInfo();
         }
-
-        // Declare an event to trigger when the main window should be closed
-        public event CloseMainWindowDelegate CloseMainWindowEvent;
-
-        // Method for closing the main window
-        public void CloseMainWindow()
-        {
-            Close();
-        }
         private void DragWindow(object sender, MouseButtonEventArgs e)
         {
             try

@@ -13,7 +13,6 @@ namespace PDF_Rotate_Tool
     /// </summary>
     public partial class RegisterWindow : Window
     {
-        public string machineID_str { get; set; }
         public RegisterWindow()
         {
             InitializeComponent();
@@ -59,7 +58,7 @@ namespace PDF_Rotate_Tool
                 // Trigger the delegate event to close the main window
                 if (Application.Current.MainWindow is MainWindow mainWindow)
                 {
-                    mainWindow.CloseMainWindowEvent?.Invoke();
+                    mainWindow.Close();
                 }
             }
         }

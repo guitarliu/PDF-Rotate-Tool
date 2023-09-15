@@ -61,7 +61,7 @@ namespace PDF_Rotate_Tool {
         }
         
         /// <summary>
-        ///   查找类似  的本地化字符串。
+        ///   查找类似 &lt;RSAKeyValue&gt;&lt;Modulus&gt;6Z030ukOZCfNUj/tF0DYIY0sYrdcfAVJg+1eZTbRqHDIYSmJ4wXW0tLOk0pe79wOK6iIwzwFpSk0beUecd6Qp4x5jq+S/cHmZu1OwVyK0tSYQcJj0kwbAHU8D8NltulCQWWA6y+qqUAz1VrniR/dMhkD9hHxfkU4ZO6qqYeT5d0=&lt;/Modulus&gt;&lt;Exponent&gt;AQAB&lt;/Exponent&gt;&lt;/RSAKeyValue&gt; 的本地化字符串。
         /// </summary>
         internal static string publickey {
             get {
