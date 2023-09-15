@@ -52,7 +52,7 @@ namespace PDF_Rotate_Tool
             else
             {
                 // Failure Activating Program 
-                MessageBox.Show("注册失败!!", "注册失败", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("注册失败!!", "注册信息", MessageBoxButton.OK, MessageBoxImage.Error);
                 this.Close();
 
                 // Trigger the delegate event to close the main window
@@ -91,10 +91,9 @@ namespace PDF_Rotate_Tool
                 }
 
             }
-            catch (CryptographicException ex)
+            catch
             {
                 // Verify Failure
-                Console.WriteLine("注册码无效: " + ex.Message);
                 return false;
             }
         }

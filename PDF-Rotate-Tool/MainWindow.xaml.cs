@@ -21,8 +21,6 @@ namespace PDF_Rotate_Tool
     /// </summary>
     public partial class MainWindow : Window
     {
-        // Define a delegate type for closing the main window
-        public delegate void CloseMainWindowDelegate();
         public MainWindow()
         {
             InitializeComponent();
@@ -438,7 +436,6 @@ namespace PDF_Rotate_Tool
             catch (CryptographicException ex)
             {
                 // Verify Failure
-                Console.WriteLine("注册码无效: " + ex.Message);
                 return false;
             }
         }
