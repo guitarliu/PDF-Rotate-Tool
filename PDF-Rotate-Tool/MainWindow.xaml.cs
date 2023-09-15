@@ -372,7 +372,8 @@ namespace PDF_Rotate_Tool
             else
             {
                 // Failure Activating Program 
-                MessageBox.Show("注册失败!!", "注册信息", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("注册码错误, 注册失败!!", "注册信息", MessageBoxButton.OK, MessageBoxImage.Error);
+                this.Close();
             }
         }
         private async void CheckRegisterInfo()
@@ -433,7 +434,7 @@ namespace PDF_Rotate_Tool
                 }
 
             }
-            catch (CryptographicException ex)
+            catch
             {
                 // Verify Failure
                 return false;
