@@ -5,6 +5,8 @@ using System.Windows.Input;
 using System.Resources;
 using System.Security.Cryptography;
 using System.Text;
+using System.IO;
+using System.Security.Cryptography.X509Certificates;
 
 namespace PDF_Rotate_Tool
 {
@@ -35,6 +37,8 @@ namespace PDF_Rotate_Tool
             // Create an instance of ResourceManager, specifying the name of the resource file and the assembly that contains it
             ResourceManager resourceManager = new ResourceManager("PDF_Rotate_Tool.ResourcePublicKey", typeof(ResourcePublicKey).Assembly);
 
+            string registerFilePath = AppDomain.CurrentDomain.BaseDirectory + @"..\\..\\..\\Register.txt";
+
             // Retrieve the string using the GetString method, where "publickey" is the key for the string you set in ResourcePublicKey.resx
             string publickey = resourceManager.GetString("publickey");
 
@@ -48,6 +52,17 @@ namespace PDF_Rotate_Tool
             {
                 // Activate Program
                 MessageBox.Show("注册成功!", "注册信息", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                // Write RegisterCode to Register.txt
+                if (File.Exists(registerFilePath) && new FileInfo(registerFilePath).Length != 0)
+                {
+                    string[] lines = File.ReadAllLines(registerFilePath);
+                    if (lines.Length >= 2)
+                    {
+                        lines[1] = Tbx_RegisterCode.Text;
+                        File.WriteAllLines(registerFilePath, lines);
+                    }
+                }
             }
             else
             {
@@ -77,17 +92,9 @@ namespace PDF_Rotate_Tool
                     // Convert activatationCode's Base64 string to bytes
                     byte[] signatureBytes = Convert.FromBase64String(activationCode);
 
-                    // Create an instance of SHA256
-                    using (SHA256 sha256 = SHA256.Create())
-                    {
-                        // Compute the hash of the machineIDBytes
-                        byte[] hashBytes = sha256.ComputeHash(machineIDBytes);
+                    bool isSignatureValid = rsa.VerifyData(machineIDBytes, new SHA256CryptoServiceProvider(), signatureBytes);
 
-                        // Use RSA public key to verify the signature
-                        bool isSignatureValid = rsa.VerifyData(hashBytes, CryptoConfig.MapNameToOID("SHA256"), signatureBytes);
-
-                        return isSignatureValid;
-                    }
+                    return isSignatureValid;
                 }
             }
             catch
@@ -100,6 +107,7 @@ namespace PDF_Rotate_Tool
 
         private void Bt_Close_Click(object sender, RoutedEventArgs e)
         {
+            Init_RegisterWindow();
             this.Close();
         }
 
@@ -114,10 +122,12 @@ namespace PDF_Rotate_Tool
             // True, Close this window
             // False, Show Alert MessageBox
             Init_RegisterWindow();
+            this.Close();
         }
 
         private void Bt_Cancel_Click(object sender, RoutedEventArgs e)
         {
+            Init_RegisterWindow();
             this.Close();
         }
     }

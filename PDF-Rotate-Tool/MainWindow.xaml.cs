@@ -274,9 +274,7 @@ namespace PDF_Rotate_Tool
 
         private void Register_Click(object sender, RoutedEventArgs e) 
         {
-            RegisterWindow registerWindow = new RegisterWindow();
-            registerWindow.Tbx_MachineID.Text = Get_MachineID().GetAwaiter().GetResult();
-            registerWindow.ShowDialog();
+            CheckRegisterInfo();
         }
         private void Author_Click(object sender, RoutedEventArgs e)
         {
@@ -351,35 +349,17 @@ namespace PDF_Rotate_Tool
             RegisterWindow registerWindow = new RegisterWindow();
             registerWindow.Tbx_MachineID.Text = Get_MachineID().GetAwaiter().GetResult();
             registerWindow.ShowDialog();
-
-            // Create an instance of ResourceManager, specifying the name of the resource file and the assembly that contains it
-            ResourceManager resourceManager = new ResourceManager("PDF_Rotate_Tool.ResourcePublicKey", typeof(ResourcePublicKey).Assembly);
-
-            // Retrieve the string using the GetString method, where "publickey" is the key for the string you set in ResourcePublicKey.resx
-            string publickey = resourceManager.GetString("publickey");
-
-            // Get RegisterCode from RegisterWindow
-            string activationCode = registerWindow.Tbx_RegisterCode.Text;
-
-            // Verify activationCode
-            bool isValid = VerifyActivationCode(Get_MachineID().GetAwaiter().GetResult(), publickey, activationCode);
-
-            if (isValid)
-            {
-                // Activate Program
-                MessageBox.Show("注册成功!", "注册信息", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-            else
-            {
-                // Failure Activating Program 
-                MessageBox.Show("注册码错误, 注册失败!!", "注册信息", MessageBoxButton.OK, MessageBoxImage.Error);
-                this.Close();
-            }
         }
-        private async void CheckRegisterInfo()
+        private void CheckRegisterInfo()
         {
             // Read Register File to check whether RegisterCode is matched with MachineID
             string registerFilePath = AppDomain.CurrentDomain.BaseDirectory + @"..\\..\\..\\Register.txt";
+
+            // Create an instance of ResourceManager, specifying the name of the resource file and the assembly that contains it
+            ResourceManager resourceManager = new ResourceManager("PDF_Rotate_Tool.ResourcePublicKey", typeof(ResourcePublicKey).Assembly);
+            // Retrieve the string using the GetString method, where "publickey" is the key for the string you set in ResourcePublicKey.resx
+            string publickey = resourceManager.GetString("publickey");
+
             if (!File.Exists(registerFilePath) || new FileInfo(registerFilePath).Length == 0)
             {
                 using (StreamWriter writer = new StreamWriter(registerFilePath, true, Encoding.UTF8))
@@ -397,47 +377,32 @@ namespace PDF_Rotate_Tool
                  * If Not Matched, then Replace Register.txt's MachineID and 
                  * reinput registercode to Active
                 */
-            }
-        }
-
-        /// <summary>
-        /// Verify ActivationCode using publicKey and actiationCode
-        /// </summary>
-        /// <param name="publicKey"></param>
-        /// <param name="activationCode"></param>
-        /// <returns></returns>
-        public static bool VerifyActivationCode(string machineID, string publicKey, string activationCode)
-        {
-            try
-            {
-                using (RSACryptoServiceProvider rsa = new RSACryptoServiceProvider())
+                using (StreamReader  reader = new StreamReader(registerFilePath)) 
                 {
-                    rsa.FromXmlString(publicKey);
+                    string machineID_Restored = reader.ReadLine();
+                    string registerCode_Restored = reader.ReadLine();
 
-                    // Convert machineID to bytes
-                    byte[] machineIDBytes = Encoding.UTF8.GetBytes(machineID);
+                    bool machineIDCheckbool =  machineID_Restored == Get_MachineID().GetAwaiter().GetResult();
+                    bool registerCodeCheckbool = RegisterWindow.VerifyActivationCode(Get_MachineID().GetAwaiter().GetResult(), publickey, registerCode_Restored);
 
-                    // Convert activatationCode's Base64 string to bytes
-                    byte[] signatureBytes = Convert.FromBase64String(activationCode);
-
-                    // Create an instance of SHA256
-                    using (SHA256 sha256 = SHA256.Create())
+                    if (!machineIDCheckbool)
                     {
-                        // Compute the hash of the machineIDBytes
-                        byte[] hashBytes = sha256.ComputeHash(machineIDBytes);
-
-                        // Use RSA public key to verify the signature
-                        bool isSignatureValid = rsa.VerifyData(hashBytes, CryptoConfig.MapNameToOID("SHA256"), signatureBytes);
-
-                        return isSignatureValid;
+                        reader.Close();
+                        using (StreamWriter writer = new StreamWriter(registerFilePath, false, Encoding.UTF8))
+                        {
+                            writer.WriteLine(Get_MachineID().GetAwaiter().GetResult() + "\n");
+                        }
+                        Init_RegisterWindow();
+                    }
+                    else if (machineIDCheckbool && !registerCodeCheckbool)
+                    {
+                        Init_RegisterWindow();
+                    }
+                    else
+                    {
+                        MessageBox.Show($"欢迎使用PDF-Rotate-Tool，产品已注册成功，机器码为{Get_MachineID().GetAwaiter().GetResult()}", "注册信息", MessageBoxButton.OK, MessageBoxImage.Information);
                     }
                 }
-
-            }
-            catch
-            {
-                // Verify Failure
-                return false;
             }
         }
     }
