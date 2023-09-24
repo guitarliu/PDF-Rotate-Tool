@@ -113,7 +113,7 @@ namespace PDF_Rotate_Tool
 
         private void Bt_How_Register_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start(new ProcessStartInfo("https://www.notion.so/55a9daf124ea47b18d0322aca011d4dd?pvs=4") { UseShellExecute = true });
+            Process.Start(new ProcessStartInfo("https://guitarliutop.notion.site/guitarliutop/PDF-Rotate-Tool-55a9daf124ea47b18d0322aca011d4dd") { UseShellExecute = true });
         }
 
         private void Bt_Ok_Click(object sender, RoutedEventArgs e)

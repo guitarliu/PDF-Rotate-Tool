@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PDF_Rotate_Tool"
         mc:Ignorable="d"
-        Height="550" Width="400" Icon="Icons/help.ico" Title="帮助"
+        Height="400" Width="450" Icon="Icons/help.ico" Title="帮助"
         Background="Transparent" BorderThickness="0" BorderBrush="Transparent"
         WindowStyle="None" AllowDrop="True" AllowsTransparency="True"
         MouseLeftButtonDown="DragWindow" ResizeMode="NoResize"
@@ -26,7 +26,19 @@
             </Grid>
             <GridSplitter Background="Transparent" BorderBrush="Gray" BorderThickness="0,0,0,0.5" IsEnabled="False" VerticalAlignment="Bottom" HorizontalAlignment="Stretch"/>
             <Grid Grid.Row="1">
-                <TextBox AcceptsReturn="False" Margin="10,0,10,10"></TextBox>
+                <Image Source="Icons/logo.ico" Width="30" Height="30" VerticalAlignment="Top"
+                       HorizontalAlignment="Left" Margin="10,10,0,0" RenderOptions.BitmapScalingMode="HighQuality"/>
+                <Label Content="PDF-Rotate-Tool©️" Background="Transparent" Margin="35,10,0,0" Foreground="#7228FF"
+                       Width="160" Height="30" FontSize="15" FontWeight="ExtraBlack" FontStyle="Italic"
+                       HorizontalAlignment="Left" VerticalAlignment="Top"
+                       HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                <TextBox x:Name="HelpInfoTbx" Background="GhostWhite" Foreground="Black"
+                         BorderThickness="0.5" BorderBrush="Gray"
+                         Width="430" Height="300" AcceptsReturn="True" VerticalAlignment="Top"
+                         HorizontalAlignment="Left" HorizontalContentAlignment="Left"
+                         VerticalContentAlignment="Top" TextWrapping="Wrap" IsReadOnly="True"
+                         VerticalScrollBarVisibility="Visible" Margin="10,50,0,0"
+                         ScrollViewer.VerticalScrollBarVisibility="Auto"/>
             </Grid>
         </Grid>
     </Border>

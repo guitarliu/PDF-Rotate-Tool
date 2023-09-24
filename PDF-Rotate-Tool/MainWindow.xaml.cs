@@ -278,7 +278,7 @@ namespace PDF_Rotate_Tool
         }
         private void Author_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start(new ProcessStartInfo("https://www.notion.so/55a9daf124ea47b18d0322aca011d4dd?pvs=4") { UseShellExecute = true });
+            Process.Start(new ProcessStartInfo("https://guitarliu.github.io/") { UseShellExecute = true });
         }
 
         // Get CPUID
