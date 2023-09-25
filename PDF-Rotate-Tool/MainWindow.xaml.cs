@@ -400,7 +400,7 @@ namespace PDF_Rotate_Tool
                     }
                     else
                     {
-                        MessageBox.Show($"欢迎使用PDF-Rotate-Tool，产品已注册成功，机器码为{Get_MachineID().GetAwaiter().GetResult()}", "注册信息", MessageBoxButton.OK, MessageBoxImage.Information);
+                        MessageBox.Show($"欢迎使用PDF-Rotate-Tool，产品已注册成功!", "注册信息", MessageBoxButton.OK, MessageBoxImage.Information);
                     }
                 }
             }
