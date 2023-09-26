@@ -37,7 +37,7 @@ namespace PDF_Rotate_Tool
             // Create an instance of ResourceManager, specifying the name of the resource file and the assembly that contains it
             ResourceManager resourceManager = new ResourceManager("PDF_Rotate_Tool.ResourcePublicKey", typeof(ResourcePublicKey).Assembly);
 
-            string registerFilePath = AppDomain.CurrentDomain.BaseDirectory + @"..\\..\\..\\Register.txt";
+            string registerFilePath = AppDomain.CurrentDomain.BaseDirectory + @"Register.txt";
 
             // Retrieve the string using the GetString method, where "publickey" is the key for the string you set in ResourcePublicKey.resx
             string publickey = resourceManager.GetString("publickey");

@@ -353,7 +353,7 @@ namespace PDF_Rotate_Tool
         private void CheckRegisterInfo()
         {
             // Read Register File to check whether RegisterCode is matched with MachineID
-            string registerFilePath = AppDomain.CurrentDomain.BaseDirectory + @"..\\..\\..\\Register.txt";
+            string registerFilePath = AppDomain.CurrentDomain.BaseDirectory + @"Register.txt";
 
             // Create an instance of ResourceManager, specifying the name of the resource file and the assembly that contains it
             ResourceManager resourceManager = new ResourceManager("PDF_Rotate_Tool.ResourcePublicKey", typeof(ResourcePublicKey).Assembly);
