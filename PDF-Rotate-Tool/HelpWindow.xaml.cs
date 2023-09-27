@@ -53,7 +53,7 @@ namespace PDF_Rotate_Tool
                                "  8.1 许可方保留根据需要随时更改本协议的权利。用户应定期查看本协议以了解任何更改。继续使用本软件将被视为接受任何更改。\n" +
                                "9.联系信息\n" +
                                "  9.1 有关本许可协议的任何问题或意见，请联系：\n" +
-                               "  邮箱：whuxiaotaiye@google.com";
+                               "  邮箱：whuliuxiaoyong@163.com";
         }
 
         private void DragWindow(object sender, MouseButtonEventArgs e)

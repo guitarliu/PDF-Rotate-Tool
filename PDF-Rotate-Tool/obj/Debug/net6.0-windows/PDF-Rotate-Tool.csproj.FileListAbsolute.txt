@@ -48,9 +48,6 @@ C:\Users\xwlva\Desktop\PDF-Rotate-Tool\PDF-Rotate-Tool\bin\Debug\net6.0-windows\
 C:\Users\xwlva\Desktop\PDF-Rotate-Tool\PDF-Rotate-Tool\bin\Debug\net6.0-windows\PdfSharp.xml
 C:\Users\xwlva\Desktop\PDF-Rotate-Tool\PDF-Rotate-Tool\bin\Debug\net6.0-windows\de\PdfSharp.resources.dll
 C:\Users\xwlva\Desktop\PDF-Rotate-Tool\PDF-Rotate-Tool\obj\Debug\net6.0-windows\PDF-Rotate-Tool.csproj.CopyComplete
-C:\Users\whuli\Desktop\PDF-Rotate-Tool\PDF-Rotate-Tool\bin\Debug\net6.0-windows\PdfSharp.pdb
-C:\Users\whuli\Desktop\PDF-Rotate-Tool\PDF-Rotate-Tool\bin\Debug\net6.0-windows\PdfSharp.xml
-C:\Users\whuli\Desktop\PDF-Rotate-Tool\PDF-Rotate-Tool\bin\Debug\net6.0-windows\de\PdfSharp.resources.dll
 C:\Users\whuli\Desktop\PDF-Rotate-Tool\PDF-Rotate-Tool\obj\Debug\net6.0-windows\PDF-Rotate-Tool.csproj.CopyComplete
 C:\Users\whuli\Desktop\PDF-Rotate-Tool\PDF-Rotate-Tool\obj\Debug\net6.0-windows\RegisterWindow.g.cs
 C:\Users\whuli\Desktop\PDF-Rotate-Tool\PDF-Rotate-Tool\obj\Debug\net6.0-windows\RegisterWindow.baml
@@ -66,3 +63,5 @@ C:\Users\whuli\Desktop\PDF-Rotate-Tool\PDF-Rotate-Tool\obj\Debug\net6.0-windows\
 C:\Users\whuli\Desktop\PDF-Rotate-Tool\PDF-Rotate-Tool\obj\Debug\net6.0-windows\PDF-Rotate-Tool.csproj.GenerateResource.cache
 C:\Users\xwlva\Desktop\PDF-Rotate-Tool\PDF-Rotate-Tool\obj\Debug\net6.0-windows\PDF_Rotate_Tool.ResourcePublicKey.resources
 C:\Users\xwlva\Desktop\PDF-Rotate-Tool\PDF-Rotate-Tool\obj\Debug\net6.0-windows\PDF-Rotate-Tool.csproj.GenerateResource.cache
+C:\Users\whuli\Desktop\PDF-Rotate-Tool\PDF-Rotate-Tool\bin\Debug\net6.0-windows\Icons\logo.ico
+C:\Users\whuli\Desktop\PDF-Rotate-Tool\PDF-Rotate-Tool\obj\Debug\net6.0-windows\PDF-Rotate-Tool_Content.g.cs

@@ -112,11 +112,6 @@
             "assemblyVersion": "1.50.4740.0",
             "fileVersion": "1.50.4740.0"
           }
-        },
-        "resources": {
-          "de/PdfSharp.resources.dll": {
-            "locale": "de"
-          }
         }
       }
     }
